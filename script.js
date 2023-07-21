@@ -19,7 +19,7 @@ for (i = 0; i < close.length; i++) {
   }
 }
 
-// Add a "checked" symbol when clicking on a list item
+// Add a "checked" symbol when clicking on an item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
@@ -43,6 +43,7 @@ function addElement(){
     else {
         document.getElementById("myList").appendChild(list);
     }
+    document.getElementById("userInput").value = "";
 
     var span = document.createElement("span");
     span.className = "deleteButton";
@@ -59,14 +60,6 @@ function addElement(){
     }
     displayCount();
 }
-
-// //To display the add button only when input is focused..
-// function startListing(){
-//  document.getElementById("addButton").style.display = "block"; 
-// }
-// function stopListing(){
-//   document.getElementById("addButton").style.display = "none"; 
-// }
 
 //To make all the lists checked on click of complete all
 function completeAll(){
@@ -85,12 +78,13 @@ function clearCompleted(){
     completedElement[j].style.display = "none";
   }
 }
-
+//To list down all tasks
 function allTasks(){
   for (let i = 0; i < myNodelist.length; i++) {
     myNodelist[i].style.display = "block";
   }
 }
+//To list down completed tasks
 function completed(){
   for(let i=0;i<myNodelist.length;i++){
     myNodelist[i].style.display = "none";
@@ -99,11 +93,12 @@ function completed(){
     completedElement[j].style.display = "block";
   }
 }
-
+//To display the number of tasks left
 document.getElementById("myList").addEventListener("click", displayCount);
 function displayCount() {
   document.getElementById("count").innerHTML = myNodelist.length - completedElement.length;
 }
+//To display count on page load
 function loading(){
   displayCount();
  
